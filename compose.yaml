@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  analisis-jni:
+    image: 'ingdavid2005/analisis-jni:latest'
+    ports:
+      - '8080:8080'
+    networks:
+      - red-backend-app
+networks:
+  red-backend-app:
+    driver: bridge

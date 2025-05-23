@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 @RestController
-@RequestMapping("/api/analisis")
+@RequestMapping("/api/analisis-service")
 public class AnalisisRestController {
 
     // Declaraciones nativas para los métodos de C (renombradas)

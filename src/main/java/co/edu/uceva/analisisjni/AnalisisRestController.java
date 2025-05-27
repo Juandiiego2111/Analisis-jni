@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 @RequestMapping("/api/analisis-service")
 public class AnalisisRestController {
 
-    // Declaraciones nativas para los métodos de C (renombradas)
+    // Declaraciones nativas para los métodos de C
     private native double puntoFijoNativo(double x0, double tol, int maxIter, String funcion);
     private native double biseccionNativo(double a, double b, double tol, int maxIter, String funcion);
     private native double newtonRaphsonNativo(String fx, String dfx, double x0, double tol, int maxIter);
@@ -68,6 +68,7 @@ public class AnalisisRestController {
         }
     }
 
+
     private void validarParametros(double tol, int maxIter) {
         if (tol <= 0) {
             throw new IllegalArgumentException("La tolerancia debe ser mayor que cero");
@@ -77,7 +78,6 @@ public class AnalisisRestController {
         }
     }
 
-    // Clase interna para representar resultados
     public static class Resultado {
         private final String metodo;
         private final double resultado;

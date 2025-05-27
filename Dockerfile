@@ -1,9 +1,8 @@
-FROM openjdk:21
+FROM openjdk:21-slim
+RUN apt-get update && apt-get install -y libcjson1 libcjson-dev
 VOLUME /tmp
 EXPOSE 8080
-ARG JAR_FILE=target/Analisis-jni-*.jar
-ADD ${JAR_FILE} app.jar
+ARG JAR_FILE=target/analisis-jni-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
 COPY libanalisisnumerico.so /usr/local/lib/
-ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-RUN chmod +x /usr/local/lib/libanalisisnumerico.so
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-Djava.library.path=/usr/local/lib", "-jar", "app.jar"]
